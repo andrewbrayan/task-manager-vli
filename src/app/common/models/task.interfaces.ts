@@ -1,3 +1,9 @@
+import { TaskStatusEnum } from './task-status.enum';
+
+export interface IState {
+  tasks: ITaskState;
+}
+
 export interface ITaskState {
   tasks: ITask[];
   loading: boolean;
@@ -8,7 +14,7 @@ export interface ITask {
   id: string;
   name: string;
   dueDate: string;
-  completed: boolean;
+  status: TaskStatusEnum;
   persons: IPerson[];
 }
 

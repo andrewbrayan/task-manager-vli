@@ -4,6 +4,7 @@ import * as TaskActions from './task.actions';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { TaskService } from '../common/services/task.service';
+import { TaskStatusEnum } from '@common/models/task-status.enum';
 
 @Injectable()
 export class TaskEffects {
@@ -44,12 +45,17 @@ export class TaskEffects {
     this.actions$.pipe(
       ofType(TaskActions.completeTask),
       mergeMap((action) =>
-        this.taskService.completeTask(action.taskId, { completed: true }).pipe(
-          map((task) => TaskActions.completeTaskSuccess({ task })),
-          catchError((error) =>
-            of(TaskActions.completeTaskFailure({ error: error.message }))
+        this.taskService
+          .completeTask(action.taskId, { status: TaskStatusEnum.COMPLETE })
+          .pipe(
+            mergeMap(() => [
+              TaskActions.deleteTaskSuccess({ taskId: action.taskId }),
+              TaskActions.loadTasks(),
+            ]),
+            catchError((error) =>
+              of(TaskActions.completeTaskFailure({ error: error.message }))
+            )
           )
-        )
       )
     )
   );
@@ -60,7 +66,10 @@ export class TaskEffects {
       ofType(TaskActions.deleteTask),
       mergeMap((action) =>
         this.taskService.deleteTask(action.taskId).pipe(
-          map(() => TaskActions.deleteTaskSuccess({ taskId: action.taskId })),
+          mergeMap(() => [
+            TaskActions.deleteTaskSuccess({ taskId: action.taskId }),
+            TaskActions.loadTasks(),
+          ]),
           catchError((error) =>
             of(TaskActions.deleteTaskFailure({ error: error.message }))
           )

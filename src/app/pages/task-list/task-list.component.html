@@ -1,0 +1,73 @@
+<mat-card class="taskList">
+  <mat-card-header>
+    <mat-card-title>Listado de Tareas</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="taskList__content">
+
+    <mat-card-subtitle>Filtros</mat-card-subtitle>
+    <mat-chip-listbox
+      aria-label="Task Status Filter"
+      [value]="filterStatus"
+      (change)="filterTasks($event)"
+    >
+      <mat-chip-option
+        *ngFor="let option of filterStatuses"
+        [value]="option.value"
+      >
+        {{ option.viewValue }}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-card *ngFor="let task of paginatedTasks" class="taskList__task">
+      <mat-card-header>
+        <mat-icon
+          mat-card-avatar
+          [color]="task.status === 'complete' ? 'primary' : 'warn'"
+        >
+          {{ task.status === "complete" ? "task_alt" : "pending" }}
+        </mat-icon>
+        <mat-card-title>{{ task.id }} - {{ task.name }}</mat-card-title>
+        <mat-card-subtitle>{{ task.dueDate | date }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>Personas Asociadas:</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let person of task.persons">
+            <mat-icon matListItemIcon>arrow_right</mat-icon>
+            <div matListItemTitle class="taskList__task-person">
+              <p>{{ person.name }}</p>
+              <b>({{ person.age }} años)</b>
+              <span></span>
+              <mat-chip-listbox class="taskList__task-skills">
+                <mat-chip color="accent" *ngFor="let skill of person.skills">
+                  {{ skill }}
+                </mat-chip>
+              </mat-chip-listbox>
+            </div>
+          </mat-list-item>
+        </mat-list>
+        <mat-divider />
+      </mat-card-content>
+      <mat-card-actions class="taskList__task-actions">
+        <button mat-raised-button color="primary" (click)="completeTask(task)">Completar</button>
+        <button mat-raised-button color="warn" (click)="deleteTask(task)">Borrar</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-paginator
+      [length]="filteredTasks.length"
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[1, 2, 3, 5, 10, 20, 50, 100]"
+      [showFirstLastButtons]="true"
+      aria-label="Select page"
+      (page)="handlePageEvent($event)"
+    >
+    </mat-paginator>
+  </mat-card-content>
+
+  <mat-card-footer *ngIf="loading$ | async">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

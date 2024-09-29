@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Tarea 1",
       "dueDate": "2024-10-01",
-      "completed": false,
+      "status": "complete",
       "persons": [
         {
           "name": "Juan Perez",
@@ -17,12 +17,41 @@
       "id": "2",
       "name": "Tarea 2",
       "dueDate": "2024-10-01",
-      "completed": false,
+      "status": "pending",
       "persons": [
         {
           "name": "Juan Perez",
           "age": 30,
-          "skills": ["Angular", "TypeScript"]
+          "skills": [
+            "Angular",
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "Vue",
+            "Svelte",
+            "HTML",
+            "CSS",
+            "SASS",
+            "SCSS",
+            "Less",
+            "Bootstrap",
+            "JQuery",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "PostgreSQL",
+            "MySQL",
+            "Firebase",
+            "AWS",
+            "GCP",
+            "Azure",
+            "Terraform",
+            "Docker",
+            "Kubernetes",
+            "Git",
+            "GitHub",
+            "Bitbucket"
+          ]
         }
       ]
     },
@@ -30,8 +59,18 @@
       "id": "3",
       "name": "Tarea 3",
       "dueDate": "2024-10-01",
-      "completed": false,
+      "status": "complete",
       "persons": [
+        {
+          "name": "Juan Perez",
+          "age": 30,
+          "skills": ["Angular", "TypeScript"]
+        },
+        {
+          "name": "Juan Perez",
+          "age": 30,
+          "skills": ["Angular", "TypeScript"]
+        },
         {
           "name": "Juan Perez",
           "age": 30,
@@ -43,7 +82,7 @@
       "id": "4",
       "name": "Tarea 4",
       "dueDate": "2024-10-01",
-      "completed": false,
+      "status": "pending",
       "persons": [
         {
           "name": "Juan Perez",
@@ -56,7 +95,20 @@
       "id": "5",
       "name": "Tarea 5",
       "dueDate": "2024-10-01",
-      "completed": false,
+      "status": "pending",
+      "persons": [
+        {
+          "name": "Juan Perez",
+          "age": 30,
+          "skills": ["Angular", "TypeScript"]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Tarea 6",
+      "dueDate": "2024-10-01",
+      "status": "pending",
       "persons": [
         {
           "name": "Juan Perez",

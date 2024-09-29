@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Gestión de Tareas</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/tasks">Ver Tareas</button>
+  <button mat-button routerLink="/tasks/create">Crear Tarea</button>
+</mat-toolbar>
+
+<div class="layout-content">
+  <!-- Aquí se mostrarán los componentes de las rutas hijas -->
+  <router-outlet></router-outlet>
+</div>
