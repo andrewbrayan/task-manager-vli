@@ -1,121 +1,22 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "name": "Tarea 1",
-      "dueDate": "2024-10-01",
-      "status": "complete",
+      "id": "0ebc365c-fba1-4d95-be50-62913551f57f",
+      "name": "Desarrollar Aplicacion",
+      "dueDate": "2024-10-02T05:00:00.000Z",
       "persons": [
         {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Tarea 2",
-      "dueDate": "2024-10-01",
-      "status": "pending",
-      "persons": [
-        {
-          "name": "Juan Perez",
-          "age": 30,
+          "name": "Brayan Martinez",
+          "age": 29,
           "skills": [
             "Angular",
-            "TypeScript",
-            "JavaScript",
             "React",
-            "Vue",
-            "Svelte",
-            "HTML",
-            "CSS",
-            "SASS",
-            "SCSS",
-            "Less",
-            "Bootstrap",
-            "JQuery",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "PostgreSQL",
-            "MySQL",
-            "Firebase",
-            "AWS",
-            "GCP",
-            "Azure",
-            "Terraform",
-            "Docker",
-            "Kubernetes",
-            "Git",
-            "GitHub",
-            "Bitbucket"
+            "NextJs",
+            "Astro"
           ]
         }
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Tarea 3",
-      "dueDate": "2024-10-01",
-      "status": "complete",
-      "persons": [
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        },
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        },
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "name": "Tarea 4",
-      "dueDate": "2024-10-01",
-      "status": "pending",
-      "persons": [
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "name": "Tarea 5",
-      "dueDate": "2024-10-01",
-      "status": "pending",
-      "persons": [
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        }
-      ]
-    },
-    {
-      "id": "6",
-      "name": "Tarea 6",
-      "dueDate": "2024-10-01",
-      "status": "pending",
-      "persons": [
-        {
-          "name": "Juan Perez",
-          "age": 30,
-          "skills": ["Angular", "TypeScript"]
-        }
-      ]
+      ],
+      "status": "pending"
     }
   ]
 }

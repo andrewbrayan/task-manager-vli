@@ -1,0 +1,25 @@
+.notfound {
+  margin: 5rem;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  * {
+    border: none;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  iframe {
+    width: 80vw;
+    height: 70vh;
+  }
+}

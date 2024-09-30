@@ -29,7 +29,10 @@ export class TaskEffects {
       ofType(TaskActions.createTask),
       mergeMap((action) =>
         this.taskService.createTask(action.task).pipe(
-          map((task) => TaskActions.createTaskSuccess({ task })),
+          mergeMap((task) => [
+            TaskActions.createTaskSuccess({ task }),
+            TaskActions.loadTasks(),
+          ]),
           catchError((error) =>
             of(TaskActions.createTaskFailure({ error: error.message }))
           )

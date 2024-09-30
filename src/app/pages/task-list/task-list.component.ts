@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
+  title = 'Listado de Tareas | Task Manager | Velaio';
   tasks$: Observable<ITask[]>;
   filterStatus: TaskStatusEnum = TaskStatusEnum.ALL;
   filterStatuses: { value: TaskStatusEnum; viewValue: string }[] = [

@@ -4,7 +4,7 @@
   </mat-card-header>
 
   <mat-card-content class="taskList__content">
-    <mat-card-subtitle>
+    <mat-card-subtitle class="taskList__filters">
       <span>Filtros:</span>
       <mat-chip-listbox
         aria-label="Task Status Filter"
@@ -28,7 +28,8 @@
         >
           {{ task.status === "complete" ? "task_alt" : "pending" }}
         </mat-icon>
-        <mat-card-title>{{ task.id }} - {{ task.name }}</mat-card-title>
+        <mat-card-title>{{ task.name }}</mat-card-title>
+        <mat-card-subtitle>{{ task.id }}</mat-card-subtitle>
         <mat-card-subtitle>{{ task.dueDate | date }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -37,9 +38,10 @@
           <mat-list-item *ngFor="let person of task.persons">
             <mat-icon matListItemIcon>arrow_right</mat-icon>
             <div matListItemTitle class="taskList__task-person">
-              <p>{{ person.name }}</p>
-              <b>({{ person.age }} años)</b>
-              <span></span>
+              <div>
+                <p>{{ person.name }}</p>
+                <b>({{ person.age }} años)</b>
+              </div>
               <mat-chip-listbox class="taskList__task-skills">
                 <mat-chip color="accent" *ngFor="let skill of person.skills">
                   {{ skill }}
@@ -58,6 +60,15 @@
           Borrar
         </button>
       </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngIf="filteredTasks.length === 0" class="taskList__empty">
+      <mat-card-header>
+        <mat-card-title>No hay tareas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>No hay tareas asociadas a este filtro.</p>
+      </mat-card-content>
     </mat-card>
 
     <mat-paginator
