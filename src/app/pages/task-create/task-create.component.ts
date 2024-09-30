@@ -7,6 +7,7 @@ import { uniquePersonNamesValidator } from '@common/validators/unique-person-nam
 import { Store } from '@ngrx/store';
 import * as TaskActions from '@store/task.actions';
 import { v4 } from 'uuid';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-task-create',
@@ -20,8 +21,11 @@ export class TaskCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private store: Store<IState>
-  ) {}
+    private store: Store<IState>,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Crear Nueva Tarea | Task Manager');
+  }
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({

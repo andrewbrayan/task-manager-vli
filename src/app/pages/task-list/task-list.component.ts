@@ -5,6 +5,7 @@ import { ITask, IState } from '@common/models/task.interfaces';
 import { Store } from '@ngrx/store';
 import * as TaskActions from '@store/task.actions';
 import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-task-list',
@@ -12,7 +13,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent implements OnInit {
-  title = 'Listado de Tareas | Task Manager | Velaio';
   tasks$: Observable<ITask[]>;
   filterStatus: TaskStatusEnum = TaskStatusEnum.ALL;
   filterStatuses: { value: TaskStatusEnum; viewValue: string }[] = [
@@ -27,10 +27,11 @@ export class TaskListComponent implements OnInit {
   pageSize = 3;
   pageIndex = 0;
 
-  constructor(private store: Store<IState>) {
+  constructor(private store: Store<IState>, private titleService: Title) {
     this.store.dispatch(TaskActions.loadTasks());
     this.tasks$ = this.store.select((state) => state.tasks.tasks);
     this.loading$ = this.store.select((state) => state.tasks.loading);
+    this.titleService.setTitle('Listado de Tareas | Task Manager');
   }
 
   ngOnInit(): void {

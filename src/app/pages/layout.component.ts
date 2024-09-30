@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-layout',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
-  title = 'Task Manager | Velaio';
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Task Manager');
+  }
 }

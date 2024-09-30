@@ -1,27 +1,64 @@
-# TaskManagerVli
+# Gestión de Tareas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Este proyecto es una aplicación web construida con Angular 16 que permite la gestión de tareas, incluyendo la asociación de personas y habilidades. La aplicación incluye la creación, visualización y actualización de tareas, además de filtrado por estado. Se utiliza NgRx para la gestión de estado y Angular Material para la interfaz de usuario.
 
-## Development server
+## Características Principales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Crear tareas:** Formulario para agregar nuevas tareas con nombre, fecha de vencimiento, personas asociadas y sus habilidades.
+- **Listar tareas:** Vista para mostrar las tareas creadas con la posibilidad de filtrarlas por estado (completadas o pendientes).
+- **Asignar personas:** Asocia personas a cada tarea, con validaciones para evitar duplicados, verificar que la edad sea mayor a 18 años y que se asignen al menos una habilidad a cada persona.
+- **Gestión de habilidades:** Añadir o eliminar habilidades a cada persona asignada a una tarea.
+- **Filtrar tareas:** Filtros para ver las tareas completadas o pendientes.
+- **Paginación:** La lista de tareas soporta paginación para mejorar la navegación cuando existen muchas tareas.
 
-## Code scaffolding
+## Tecnologías Utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 16:** Framework de frontend para la creación de la interfaz y la lógica de negocio.
+- **NgRx:** Biblioteca para la gestión del estado de la aplicación.
+- **Angular Material:** Componentes de interfaz de usuario para un diseño moderno y responsivo.
+- **RxJS:** Manejo de flujos de datos asíncronos.
+- **SCSS:** Preprocesador CSS utilizado para estilos personalizados.
 
-## Build
+## Iniciar Proyecto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Sigue los siguientes pasos para ejecutar el proyecto junto con JSON Server:
 
-## Running unit tests
+### Paso 1: Iniciar JSON Server
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Asegúrate de tener JSON Server instalado globalmente en tu sistema. Si no lo tienes, instálalo con el siguiente comando:
 
-## Running end-to-end tests
+```bash
+npm install -g json-server
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. En la raíz del proyecto, crea el archivo db.json con la estructura de datos inicial o utiliza el ejemplo de abajo:
 
-## Further help
+```json
+{
+  "tasks": []
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Inicia JSON Server con el siguiente comando:
+
+```bash
+json-server --watch db.json
+```
+
+### Paso 2: Instalar dependencias
+
+Instala las dependencias del proyecto con el siguiente comando:
+
+```bash
+npm install
+```
+
+### Paso 3: Iniciar el servidor de desarrollo
+
+Ejecuta el siguiente comando para iniciar el servidor de desarrollo:
+
+```bash
+npm start
+```
+
+La aplicación se iniciará en http://localhost:4200/.
