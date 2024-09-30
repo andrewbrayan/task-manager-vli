@@ -16,18 +16,10 @@
   display: none;
 }
 
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
-  border: 0;
   box-sizing: border-box;
-  vertical-align: baseline;
   scrollbar-width: thin;
   scrollbar-color: #6200ea #f1f1f1;
-}
-*::before,
-*::after {
-  display: block;
 }

@@ -6,7 +6,6 @@ import { TaskListComponent } from './task-list.component';
 
 // Módulos de Angular Material
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,7 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatCardModule,
-    MatFormFieldModule,
     MatSelectModule,
     MatListModule,
     MatIconModule,

@@ -6,7 +6,7 @@ import { LayoutModule } from './pages/layout.module';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent, // Layout como contenedor
+    component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       {
@@ -17,7 +17,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'tasks/create',
+        path: 'create',
         loadChildren: () =>
           import('./pages/task-create/task-create.module').then(
             (m) => m.TaskCreateModule

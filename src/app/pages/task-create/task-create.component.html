@@ -1,1 +1,135 @@
-<p>task-create works!</p>
+<mat-card class="taskCreate">
+  <mat-card-header>
+    <mat-card-title>Crear Nueva Tarea</mat-card-title>
+  </mat-card-header>
+
+  <form
+    [formGroup]="taskForm"
+    (ngSubmit)="onSubmit()"
+    class="taskCreate__content"
+  >
+    <mat-card-content>
+      <div class="taskCreate__first">
+        <mat-form-field>
+          <mat-label>Nombre de la Tarea</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error> Debe tener al menos 5 caracteres </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha Límite</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [min]="today"
+            formControlName="dueDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error> La fecha límite es obligatoria </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="addPerson()"
+        >
+          Añadir Persona
+        </button>
+      </div>
+
+      <!-- Lista de Personas Asociadas -->
+      <div formArrayName="persons">
+        <div
+          *ngFor="let person of persons.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <mat-card class="taskCreate__persons">
+            <mat-card-header>
+              <mat-card-title>Persona {{ i + 1 }}</mat-card-title>
+              <button
+                *ngIf="persons.controls.length > 1"
+                mat-mini-fab
+                color="warn"
+                type="button"
+                (click)="removePerson(i)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div class="taskCreate__persons-first">
+                <mat-form-field>
+                  <mat-label>Nombre Completo</mat-label>
+                  <input matInput formControlName="name" />
+                  <mat-error>
+                    Debe tener al menos 5 caracteres y no puede repetirse
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Edad</mat-label>
+                  <input matInput formControlName="age" type="number" />
+                  <mat-error> La edad debe ser mayor a 18 años </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-raised-button
+                  color="accent"
+                  type="button"
+                  (click)="addSkill(i)"
+                >
+                  Añadir Habilidad
+                </button>
+              </div>
+
+              <div formArrayName="skills">
+                <h3>Habilidades:</h3>
+                <div
+                  *ngFor="let skill of getSkills(i).controls; let j = index"
+                  class="taskCreate__persons-skills"
+                >
+                  <mat-form-field>
+                    <mat-label>Habilidad</mat-label>
+                    <input matInput [formControlName]="j" />
+                    <mat-error> La habilidad es obligatoria </mat-error>
+                  </mat-form-field>
+                  <button
+                    *ngIf="getSkills(i).controls.length > 1"
+                    mat-mini-fab
+                    color="warn"
+                    type="button"
+                    (click)="removeSkill(i, j)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-divider />
+
+    <mat-card-actions class="taskCreate__actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="taskForm.invalid"
+      >
+        Crear Tarea
+      </button>
+      <button mat-raised-button color="warn" (click)="onCancel()">
+        Cancelar
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

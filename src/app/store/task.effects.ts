@@ -10,7 +10,6 @@ import { TaskStatusEnum } from '@common/models/task-status.enum';
 export class TaskEffects {
   constructor(private actions$: Actions, private taskService: TaskService) {}
 
-  // Effect para cargar las tareas desde el servidor
   loadTasks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.loadTasks),
@@ -25,7 +24,6 @@ export class TaskEffects {
     )
   );
 
-  // Effect para crear una nueva tarea
   createTask$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.createTask),
@@ -40,7 +38,6 @@ export class TaskEffects {
     )
   );
 
-  // Effect para completar una tarea
   completeTask$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.completeTask),

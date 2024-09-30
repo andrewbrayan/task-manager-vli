@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatChipListboxChange } from '@angular/material/chips';
 import { TaskStatusEnum } from '@common/models/task-status.enum';
 import { ITask, IState } from '@common/models/task.interfaces';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
   tasks$: Observable<ITask[]>;
   filterStatus: TaskStatusEnum = TaskStatusEnum.ALL;
   filterStatuses: { value: TaskStatusEnum; viewValue: string }[] = [

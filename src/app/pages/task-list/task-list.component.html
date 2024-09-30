@@ -4,20 +4,21 @@
   </mat-card-header>
 
   <mat-card-content class="taskList__content">
-
-    <mat-card-subtitle>Filtros</mat-card-subtitle>
-    <mat-chip-listbox
-      aria-label="Task Status Filter"
-      [value]="filterStatus"
-      (change)="filterTasks($event)"
-    >
-      <mat-chip-option
-        *ngFor="let option of filterStatuses"
-        [value]="option.value"
+    <mat-card-subtitle>
+      <span>Filtros:</span>
+      <mat-chip-listbox
+        aria-label="Task Status Filter"
+        [value]="filterStatus"
+        (change)="filterTasks($event)"
       >
-        {{ option.viewValue }}
-      </mat-chip-option>
-    </mat-chip-listbox>
+        <mat-chip-option
+          *ngFor="let option of filterStatuses"
+          [value]="option.value"
+        >
+          {{ option.viewValue }}
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </mat-card-subtitle>
 
     <mat-card *ngFor="let task of paginatedTasks" class="taskList__task">
       <mat-card-header>
@@ -50,8 +51,12 @@
         <mat-divider />
       </mat-card-content>
       <mat-card-actions class="taskList__task-actions">
-        <button mat-raised-button color="primary" (click)="completeTask(task)">Completar</button>
-        <button mat-raised-button color="warn" (click)="deleteTask(task)">Borrar</button>
+        <button mat-raised-button color="primary" (click)="completeTask(task)">
+          Completar
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteTask(task)">
+          Borrar
+        </button>
       </mat-card-actions>
     </mat-card>
 

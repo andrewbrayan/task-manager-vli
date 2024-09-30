@@ -1,11 +1,33 @@
 <mat-toolbar color="primary">
   <span>Gestión de Tareas</span>
   <span class="spacer"></span>
-  <button mat-button routerLink="/tasks">Ver Tareas</button>
-  <button mat-button routerLink="/tasks/create">Crear Tarea</button>
+
+  <!-- Botones para pantallas grandes -->
+  <div class="desktop-buttons">
+    <button mat-raised-button routerLink="/tasks" routerLinkActive="active">
+      Ver Tareas
+    </button>
+    <button mat-raised-button routerLink="/create" routerLinkActive="active">
+      Crear Tarea
+    </button>
+  </div>
+
+  <!-- Botón de menú para dispositivos móviles -->
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Menú que se despliega al hacer clic en el botón de menú -->
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/tasks" routerLinkActive="active">
+      Ver Tareas
+    </button>
+    <button mat-menu-item routerLink="/create" routerLinkActive="active">
+      Crear Tarea
+    </button>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="layout-content">
-  <!-- Aquí se mostrarán los componentes de las rutas hijas -->
   <router-outlet></router-outlet>
 </div>

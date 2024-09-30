@@ -1,0 +1,41 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  margin-right: 0.5rem;
+}
+
+button.active {
+  background-color: #1976d2;
+  color: white;
+}
+
+.desktop-buttons {
+  display: none; /* Ocultamos los botones por defecto */
+}
+
+.mobile-menu-button {
+  display: none; /* El botón de menú también estará oculto por defecto */
+}
+
+/* Para pantallas grandes mostramos los botones */
+@media (min-width: 768px) {
+  .desktop-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .mobile-menu-button {
+    display: none;
+  }
+}
+
+/* Para pantallas pequeñas mostramos el botón de menú */
+@media (max-width: 767px) {
+  .desktop-buttons {
+    display: none;
+  }
+  .mobile-menu-button {
+    display: block;
+  }
+}
